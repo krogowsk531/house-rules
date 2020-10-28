@@ -1,8 +1,13 @@
+import styles from './SingleCard.module.css'
+
 const SingleCard = ({image, title, id}) => {
  return(
-     <section>
-         <h2>hey</h2>
-         <img src={image} alt={title} key={id}/>
+     <section id={id} key={id}>
+         <img 
+            src={image} 
+            alt={title} 
+            className={styles.singleCardImage}
+        />
      </section>
  )   
 }
