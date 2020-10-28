@@ -248,7 +248,7 @@ class Home extends React.Component {
     return(
       <section>
         <NavBar />
-        <Link href="/sample/Sample">Sample</Link>
+        <Link href="/sample/">Sample</Link>
         <Cards games={this.props.games}/> 
       </section>
     ) 
