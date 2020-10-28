@@ -1,6 +1,6 @@
 import React from 'react'
 import { getGames } from './api/apiCalls'
-import Cards from '../components/CardPage/Cards/Cards.js'
+import Cards from '../components/Cards/Cards.js'
 
 class Home extends React.Component {
   static async getInitialProps() {

@@ -1,6 +1,6 @@
 // import SingleCard from 'components/SingleCard/SingleCard.js'
 
-import SingleCard from "../../SingleCard/SingleCard"
+import SingleCard from "../SingleCard/SingleCard"
 
 const Cards = (props) => {
 
