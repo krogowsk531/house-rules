@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { getGames } from './api/apiCalls'
 import Cards from '../components/Cards/Cards.js'
 import NavBar from '../components/NavBar/NavBar.js'
@@ -247,6 +248,7 @@ class Home extends React.Component {
     return(
       <section>
         <NavBar />
+        <Link href="/sample/Sample">Sample</Link>
         <Cards games={this.props.games}/> 
       </section>
     ) 
