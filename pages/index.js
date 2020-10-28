@@ -2,7 +2,7 @@ import React from 'react'
 import { getGames } from './api/apiCalls'
 import Cards from '../components/CardPage/Cards/Cards.js'
 
-class Page extends React.Component {
+class Home extends React.Component {
   static async getInitialProps() {
     // const gameData = await getGames()
     const gameData = { games: [
@@ -242,20 +242,14 @@ class Page extends React.Component {
     return { games: data}
   }
 
-  // getGameData = () => {
-  //   gameData.games.map((){
-      
-  //   })
-  // }
-
   render() {
     return(
       <section>
         <div>Next stars: {}</div> 
-        <Cards /> 
+        <Cards games={this.props.games}/> 
       </section>
     ) 
   }
 }
 
-export default Page
+export default Home
