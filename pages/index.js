@@ -1,5 +1,6 @@
 import React from 'react'
 import { getGames } from './api/apiCalls'
+import Cards from '../components/CardPage/Cards/Cards.js'
 
 class Page extends React.Component {
   static async getInitialProps() {
@@ -249,7 +250,10 @@ class Page extends React.Component {
 
   render() {
     return(
-    <div>Next stars: {}</div>  
+      <section>
+        <div>Next stars: {}</div> 
+        <Cards /> 
+      </section>
     ) 
   }
 }
