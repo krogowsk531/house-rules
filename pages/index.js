@@ -1,6 +1,7 @@
 import React from 'react'
 import { getGames } from './api/apiCalls'
 import Cards from '../components/Cards/Cards.js'
+import NavBar from '../components/NavBar/NavBar.js'
 
 class Home extends React.Component {
   static async getInitialProps() {
@@ -245,7 +246,7 @@ class Home extends React.Component {
   render() {
     return(
       <section>
-        <div>Next stars: {}</div> 
+        <NavBar />
         <Cards games={this.props.games}/> 
       </section>
     ) 
