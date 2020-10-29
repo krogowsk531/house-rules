@@ -7,4 +7,5 @@ const GameDetails = () => {
   return <p>this is a detail page {gameid}</p>
 }
 
+
 export default GameDetails

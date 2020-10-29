@@ -12,7 +12,7 @@ const Cards = (props) => {
       />
     })
 
-return(
+return (
     <div>  
     Cards
     { formattedCards }

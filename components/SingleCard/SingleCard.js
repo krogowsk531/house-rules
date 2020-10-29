@@ -1,7 +1,6 @@
 import styles from './SingleCard.module.css'
 import Link from 'next/link'
 
-
 const SingleCard = ({image, title, id}) => {
  return(
     <Link 
