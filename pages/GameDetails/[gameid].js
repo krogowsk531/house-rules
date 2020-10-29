@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { getGames } from '../api/apiCalls.js'
+import { getGames, getSingleGame } from '../api/apiCalls.js'
 
 // const GameDetails = () => {
 //   const router = useRouter()
@@ -29,15 +29,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
   return {
     props: {
-      game: await getGames(params.gameid)
+      game: await getSingleGame(params.gameid)
     }
   }
 }
 
 export default function GameDetails({ game }) {
-    const router = useRouter()
-  const { gameid } = router.query
   return (
-    <>{game.name}</>
+    <>{game.games[0].name}</>
   )
 }
