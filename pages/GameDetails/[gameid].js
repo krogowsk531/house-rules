@@ -19,9 +19,25 @@ import { getGames } from '../api/apiCalls.js'
 
 export async function getStaticPaths() {
   const games = await getGames()
-  const paths = games.map(game => {
+  const paths = games.games.map(game => ({
     params: { gameid: game.id }
-  })
+  }))
 
   return { paths, fallback: false }
+}
+
+export async function getStaticProps({params}) {
+  return {
+    props: {
+      game: await getGames(params.gameid)
+    }
+  }
+}
+
+export default function GameDetails({ game }) {
+    const router = useRouter()
+  const { gameid } = router.query
+  return (
+    <>{game.name}</>
+  )
 }
