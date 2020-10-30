@@ -1,14 +1,21 @@
 import styles from './SingleCard.module.css'
+import Link from 'next/link'
 
 const SingleCard = ({image, title, id}) => {
  return(
-     <section id={id} key={id}>
-         <img 
+    <Link 
+        href={{
+            pathname: '/GameDetails/[gameid]',
+            query: { gameid: id }
+        }}
+        key={id}>
+        <img 
             src={image} 
             alt={title} 
             className={styles.singleCardImage}
         />
-     </section>
+     </Link>
  )   
+ 
 }
 export default SingleCard;  
