@@ -1,6 +1,7 @@
 // import SingleCard from 'components/SingleCard/SingleCard.js'
 
 import SingleCard from "../SingleCard/SingleCard"
+import RuleDisputeForm from '../RuleDisputeForm/RuleDisputeForm'
 
 const Cards = (props) => {
 
@@ -14,9 +15,10 @@ const Cards = (props) => {
     })
 
 return (
-    <div>  
+    <div>
     Cards
     { formattedCards }
+
     </div>
 )
 
