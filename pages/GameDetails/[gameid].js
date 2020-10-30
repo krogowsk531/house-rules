@@ -1,4 +1,5 @@
 import { getGames, getSingleGame } from '../api/apiCalls.js'
+// import RuleDisputeForm from './components/RuleDisputeForm/RuleDisputeForm'
 
 export async function getStaticPaths() {
   const games = await getGames()
