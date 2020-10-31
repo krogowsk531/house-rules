@@ -3,8 +3,10 @@ import { getGames } from './api/apiCalls'
 import Cards from '../components/Cards/Cards.js'
 import NavBar from '../components/NavBar/NavBar.js'
 
+
+
 export async function getStaticProps() {
- 
+
     const gameData = { games: [
 
           {
@@ -223,19 +225,19 @@ export async function getStaticProps() {
             "rank": 6,
             "trending_rank": 57
         },
-    
+
         ]}
     // const gameData = await getGames()
     const data = gameData.games.map(game => {
         const gameInfo = {
             image: game.image_url,
-            name: game.name, 
+            name: game.name,
             id: game.id,
         }
         return gameInfo
 
     })
-    return { 
+    return {
         props: {
             games: data
         }
@@ -247,7 +249,7 @@ export default function Home({ games }) {
         <section>
             <NavBar />
             <Link href="/sample/">Sample</Link>
-            <Cards games={games}/> 
+            <Cards games={games}/>
         </section>
     )
 }
