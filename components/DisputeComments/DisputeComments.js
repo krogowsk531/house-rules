@@ -1,30 +1,29 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
-const DisputeComments = () => {
+const DisputeComments = (props) => {
+  const [store, setStore] = useState([]);
 
-  const [store, setStore] = useState([])
-  const [counter, setCounter] = useState(0)
+    const storeRef = useRef();
 
-  useEffect(() => {
-    if (store.length) {
-      setCounter(store.length)
-    }
-  }, [store])
+    useEffect(() => {
+        storeRef.current = props.gameDetails;
+        setStore(props.gameDetails);
+    }, []);
 
-  useEffect(() => {
-    console.log('counter', counter)
-    const parsedStoredValue = window ? JSON.parse(window.localStorage.getItem('gameDetails')) : []
-    setStore(parsedStoredValue)
-  }, [counter])
+    useEffect(() => {
+        if (props.gameDetails && props.gameDetails.length !== storeRef.current.length) {
+            setStore([...storeRef.current, props.gameDetails]);
+            storeRef.current = [...storeRef.current, props.gameDetails];
+        }
+    }, [props.gameDetails]);
 
   // second arg in useEffect? - something needs to change for automatic comment generation on page on submit
   return (
     <>
       DISPUTE COMMENTS
       <ul>
-        {store.map(value => {
-          return <li>{value.expansion}</li>
+        {store && store.map((value, i) => {
+          return <li key={i}>{value.expansion}</li>
         })}
       </ul>
     </>

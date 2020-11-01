@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import DisputeComments from '../DisputeComments/DisputeComments'
 
 // function App() {
 //   // Similar to useState but first arg is key to the value in local storage.
@@ -39,7 +39,7 @@ const RuleDisputeForm = () => {
     interpretation: '',
   });
 
-  const [_, setGameDetails] = useLocalStorage('gameDetails', rules);
+  const [gameDetails, setGameDetails] = useLocalStorage('gameDetails', rules);
 
   const submitForm = (event) => {
     event.preventDefault();
@@ -61,6 +61,10 @@ const RuleDisputeForm = () => {
     officialRule,
     interpretation,
   ]);
+
+  // set rating to 0 by default
+  // can add a function that takes an object - onclick listener on comment - fires based on comment ID (for example) 
+  // increase/decrease rating - set in store
 
   return (
     <section>
@@ -100,6 +104,7 @@ const RuleDisputeForm = () => {
 
         <button onClick={(event) => submitForm(event)}>SUBMIT</button>
       </form>
+      <DisputeComments gameDetails={gameDetails} />
     </section>
   )
 };
@@ -110,7 +115,7 @@ function getLocalStorage(key, initialValue) {
       // Get from local storage by key
       const item = window ? window.localStorage.getItem(key) : null;
       // Parse stored json or if none return initialValue
-      return item ? item : initialValue;
+      return item ? JSON.parse(item) : initialValue;
     } catch (error) {
       // If error also return initialValue
       console.log(error);
