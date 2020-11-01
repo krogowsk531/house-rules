@@ -1,4 +1,4 @@
-// import styles from './SingleCard.module.css'
+import styles from './SingleCard.module.css'
 import Link from 'next/link'
 
 const SingleCard = ({image, title, id, key}) => {
@@ -12,7 +12,7 @@ const SingleCard = ({image, title, id, key}) => {
         <img
             src={image}
             alt={title}
-            // className={styles.singleCardImage}
+            className={styles.singleCardImage}
         />
      </Link>
  )
