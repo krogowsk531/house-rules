@@ -30,29 +30,32 @@ const RuleDisputeForm = () => {
         type='text'
         name='expansion'
         value={expansion}
-        onChange={event =>setExpansion(event.target.value)}
+        onChange={() => handleInput(event, setExpansion)}
         />
         <label>Number of players: </label>
         <input
         type='text'
         name='number'
         value={number}
-        onChange={event =>setNumber(event.target.value)}
+        onChange={() => handleInput(event, setNumPlayers)}
         />
         <label>Gameplay time: </label>
         <input
         type='time'
         name='time'
+        onChange={() => handleInput(event, setPlayTime)}
         />
         <label>Official Rule: </label>
         <input
         type='text'
         name='officialRule'
+        onChange={() => handleInput(event, setOfficialRule)}
         />
         <label>Interpretation of Rule: </label>
         <input
         type='text'
         name='InterpretationRule'
+        onChange={() => handleInput(event, setUserInterpreatation}
         />
 
         <button>SUBMIT</button>

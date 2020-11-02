@@ -15,3 +15,21 @@ const RuleDispute = () => {
   const [userInterpretation, setUserInterpreatation] = useState('')
 }
   // window ? window.localStorage.getItem(key) : null;
+  const handleInput = (event, setInput) => {
+    setInput(event.target.value)
+  }
+
+  const handleSubmitRule = event => {
+    event.preventDefault()
+    if (expansion !== '' && numPlayers > 0 && playTime > 0 && officialRule !== '' && userInterpretation !== '') {
+      const disputedRule = { expansion, numPlayers, playTime, officialRule, userInterpretation }
+      setDisputedRules([...disputedRules, disputedRule])
+      setExpansion('')
+      setNumPlayers(0)
+      setPlayTime(0)
+      setOfficalRule('')
+      setUserInterpreatation('')
+    } else {
+      console.log('Invalid entry')
+    }
+  }
