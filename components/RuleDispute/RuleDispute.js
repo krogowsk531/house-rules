@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 const ALL_DISPUTES = localStorage.getItem('disputedRules')
@@ -13,7 +13,7 @@ const RuleDispute = () => {
   const [playTime, setPlayTime] = useState(0)
   const [officialRule, setOfficalRule] = useState('')
   const [userInterpretation, setUserInterpreatation] = useState('')
-}
+
   // window ? window.localStorage.getItem(key) : null;
   const handleInput = (event, setInput) => {
     setInput(event.target.value)
@@ -33,3 +33,20 @@ const RuleDispute = () => {
       console.log('Invalid entry')
     }
   }
+
+  useEffect(() => {
+    localStorage.setItem('disputedRules', JSON.stringify(disputedRules))
+  }, [disputedRules])
+
+  return(
+    <RuleDisputeForm
+      expansion={expansion}
+      numPlayers={numPlayers}
+      playTime={playTime}
+      officialRule={officialRule}
+      userInterpretation={userInterpretation}
+      handleInput={handleInput}
+      handleSubmitRule={handleSubmitRule}
+    />
+  )
+}
