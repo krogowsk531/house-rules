@@ -26,7 +26,7 @@ const RuleDisputeForm = () => {
     //   [...previousValue, singleDispute]
     // });
     setAllDisputes(singleDispute)
-    console.log("what is useLocalStorage eval", allDisputes)
+    // console.log("what is useLocalStorage eval", allDisputes)
   };
 
   useEffect(() => {
@@ -92,7 +92,8 @@ const RuleDisputeForm = () => {
   )
 };
 
-function getLocalStorage(key, initialValue) {
+//because render on server - need the window check with ternary for example
+function useGetLocalStorage(key, initialValue) {
 
   const [storedValue, setStoredValue] = useState(() => {
     try {
@@ -114,18 +115,20 @@ function useLocalStorage(key, initialValue) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
 
-  const [ storedValue, setStoredValue ] = getLocalStorage('allDisputes');
+  const [ storedValue, setStoredValue ] = useGetLocalStorage('allDisputes');
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
   const setValue = value => {
+    console.log('value', value)
     try {
       // Allow value to be a function so we have same API as useState
-      console.log('value,', value, typeof value)
+      // console.log('value,', value, typeof value)
+      //check isntanceof Function -> 
       const valueToStore =
       value instanceof Function ? value(storedValue) : value;
       // Save state
-      console.log('valueToStore', valueToStore)
+      // console.log('valueToStore', valueToStore)
       setStoredValue(valueToStore);
 
       // const parsedValue = JSON.parse(storedValue);
