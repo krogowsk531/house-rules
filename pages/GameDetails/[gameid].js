@@ -1,5 +1,5 @@
 import { getGames, getSingleGame } from '../api/apiCalls.js'
-import RuleDisputeForm from '../../components/RuleDisputeForm/RuleDisputeForm.js'
+import RuleDispute from '../../components/RuleDispute/RuleDispute.js'
 
 
 export async function getStaticPaths() {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import RuleDisputeForm from '../RuleDisputeForm/RuleDisputeForm'
 
-
-const ALL_DISPUTES = localStorage.getItem('disputedRules')
-  ? JSON.parse(localStorage.getItem('disputedRules'))
-  : []
+let ALL_DISPUTES = (!window) && window.localStorage.getItem('disputedRules')
+? JSON.parse(window.localStorage.getItem('disputedRules'))
+: []
 
 
 const RuleDispute = () => {
@@ -15,6 +15,7 @@ const RuleDispute = () => {
   const [userInterpretation, setUserInterpreatation] = useState('')
 
   // window ? window.localStorage.getItem(key) : null;
+
   const handleInput = (event, setInput) => {
     setInput(event.target.value)
   }
@@ -35,11 +36,12 @@ const RuleDispute = () => {
   }
 
   useEffect(() => {
-    localStorage.setItem('disputedRules', JSON.stringify(disputedRules))
-  }, [disputedRules])
+      localStorage.setItem('disputedRules', JSON.stringify(disputedRules))
+    }, [disputedRules])
 
-  return(
-    <RuleDisputeForm
+
+    return (
+      <RuleDisputeForm
       expansion={expansion}
       numPlayers={numPlayers}
       playTime={playTime}
@@ -47,6 +49,9 @@ const RuleDispute = () => {
       userInterpretation={userInterpretation}
       handleInput={handleInput}
       handleSubmitRule={handleSubmitRule}
-    />
-  )
-}
+      />
+    )
+  }
+
+
+export default RuleDispute;

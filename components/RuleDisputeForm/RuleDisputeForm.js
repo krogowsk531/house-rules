@@ -55,7 +55,7 @@ const RuleDisputeForm = () => {
         <input
         type='text'
         name='InterpretationRule'
-        onChange={() => handleInput(event, setUserInterpreatation}
+        onChange={() => handleInput(event, setUserInterpreatation)}
         />
 
         <button>SUBMIT</button>
