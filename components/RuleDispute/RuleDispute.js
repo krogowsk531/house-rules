@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import RuleDisputeForm from '../RuleDisputeForm/RuleDisputeForm'
 
-let ALL_DISPUTES = (!window) && window.localStorage.getItem('disputedRules')
-? JSON.parse(window.localStorage.getItem('disputedRules'))
-: []
+// let ALL_DISPUTES = window.localStorage.getItem('disputedRules')
+// ? JSON.parse(window.localStorage.getItem('disputedRules'))
+// : []
 
 
 const RuleDispute = () => {
-  const [disputedRules, setDisputedRules] = useState(ALL_DISPUTES)
+  // const [disputedRules, setDisputedRules] = useState(window.localStorage.getItem('disputedRules')
+  // ? JSON.parse(window.localStorage.getItem('disputedRules'))
+  // : [])
+  const [disputedRules, setDisputedRules] = useState([])
   const [expansion, setExpansion] = useState('')
   const [numPlayers, setNumPlayers] = useState(0)
   const [playTime, setPlayTime] = useState(0)
@@ -36,22 +39,33 @@ const RuleDispute = () => {
   }
 
   useEffect(() => {
-      localStorage.setItem('disputedRules', JSON.stringify(disputedRules))
-    }, [disputedRules])
+    console.log('window')
+    console.log(window)
+    setDisputedRules(window.localStorage.getItem('disputedRules')
+      ? JSON.parse(window.localStorage.getItem('disputedRules'))
+      : [])
+    localStorage.setItem('disputedRules', JSON.stringify(disputedRules))
+  })
+    // useEffect(() => {
+    //   return null
+    // },)
 
+    // return (
+    //   <RuleDisputeForm
+    //   expansion={expansion}
+    //   numPlayers={numPlayers}
+    //   playTime={playTime}
+    //   officialRule={officialRule}
+    //   userInterpretation={userInterpretation}
+    //   handleInput={handleInput}
+    //   handleSubmitRule={handleSubmitRule}
+    //   />
+    // )
 
-    return (
-      <RuleDisputeForm
-      expansion={expansion}
-      numPlayers={numPlayers}
-      playTime={playTime}
-      officialRule={officialRule}
-      userInterpretation={userInterpretation}
-      handleInput={handleInput}
-      handleSubmitRule={handleSubmitRule}
-      />
-    )
-  }
+  return(
+    <div></div>
+  )
+}
 
 
 export default RuleDispute;

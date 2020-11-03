@@ -20,6 +20,7 @@ export async function getStaticProps({params}) {
 }
 
 export default function GameDetails({ game }) {
+  console.log('here')
   return (
     <>
       <h2 className="game-name">{game.games[0].name}</h2>

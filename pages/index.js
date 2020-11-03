@@ -4,8 +4,11 @@ import Cards from '../components/Cards/Cards.js'
 import NavBar from '../components/NavBar/NavBar.js'
 
 
+// console.log(typeof window)
+// console.log("WINDOW", window)
 
 export async function getStaticProps() {
+
 
     const gameData = { games: [
 
