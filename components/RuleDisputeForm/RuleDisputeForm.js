@@ -14,19 +14,19 @@ const RuleDisputeForm = () => {
     officialRule: 0,
     interpretation: '',
   });
-  const [allDisputes, setAllDisputes] = useState([])
+  // const [allDisputes, setAllDisputes] = useState([])
 
-  const [gameDetails, setGameDetails] = useLocalStorage('gameDetails', []);
+  const [allDisputes, setAllDisputes] = useLocalStorage('allDisputes', []);
 
 
   const submitForm = (event) => {
     event.preventDefault();
-    // setGameDetails(previousValue => {
+    // setAllDisputes(previousValue => {
     //   console.log(previousValue)
     //   [...previousValue, singleDispute]
     // });
-    setGameDetails(singleDispute)
-    console.log("what is useLocalStorage eval", gameDetails)
+    setAllDisputes(singleDispute)
+    console.log("what is useLocalStorage eval", allDisputes)
   };
 
   useEffect(() => {
@@ -87,7 +87,7 @@ const RuleDisputeForm = () => {
 
         <button onClick={(event) => submitForm(event)}>SUBMIT</button>
       </form>
-      <DisputeComments gameDetails={gameDetails} />
+      <DisputeComments allDisputes={allDisputes} />
     </section>
   )
 };
@@ -114,7 +114,7 @@ function useLocalStorage(key, initialValue) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
 
-  const [ storedValue, setStoredValue ] = getLocalStorage('gameDetails');
+  const [ storedValue, setStoredValue ] = getLocalStorage('allDisputes');
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
@@ -132,7 +132,7 @@ function useLocalStorage(key, initialValue) {
       let itemToSet = [valueToStore];
 
       if (storedValue) {
-        const parsedStoredValue = JSON.parse(window.localStorage.getItem('gameDetails'));
+        const parsedStoredValue = JSON.parse(window.localStorage.getItem('allDisputes'));
 
         itemToSet = [...parsedStoredValue, ...itemToSet];
       }
