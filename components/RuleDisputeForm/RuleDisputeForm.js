@@ -16,9 +16,37 @@ const RuleDisputeForm = () => {
   });
 
   return(
-
+    <section>
+    <form>
+      <label>Expansion Name: </label>
+      <input
+      type='text'
+      name='expansion'
+      />
+      <label>Number of players: </label>
+      <input
+      type='number'
+      name='number'
+      />
+      <label>Gameplay time in mintues: </label>
+      <input
+      type='number'
+      name='time'
+      />
+      <label>Official Rule: </label>
+      <input
+      type='text'
+      name='officialRule'
+      />
+      <label>Interpretation of Rule: </label>
+      <input
+      type='text'
+      name='InterpretationRule'
+      />
+      <button onClick={(event) => submitForm(event)}>SUBMIT</button>
+    </form>
+  </section>
   )
-  
 }
 export default RuleDisputeForm;
 
