@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { useLocalStorage } from '../../hooks/hooks.js';
 
 const RuleDisputeForm = () => {
   const [expansion, setExpansion] = useState('');
@@ -21,6 +22,7 @@ const RuleDisputeForm = () => {
     event.preventDefault();
     setGameDetails(singleDispute)
   }
+
   return(
     <section>
     <form>
@@ -62,5 +64,3 @@ const RuleDisputeForm = () => {
   )
 }
 export default RuleDisputeForm;
-
-//eventually upvote, downvote, and link
