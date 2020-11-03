@@ -15,6 +15,12 @@ const RuleDisputeForm = () => {
     interpretation: '',
   });
 
+  const [gameDetails, setGameDetails] = useLocalStorage('gameDetails', [])
+
+  const submitForm = (event) =>{
+    event.preventDefault();
+    setGameDetails(singleDispute)
+  }
   return(
     <section>
     <form>
