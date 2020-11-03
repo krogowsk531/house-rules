@@ -6,14 +6,18 @@ const DisputeComments = (props) => {
     const storeRef = useRef();
 
     useEffect(() => {
+      if (props.gameDetails) {
         storeRef.current = props.gameDetails;
-        setStore(props.gameDetails);
+      } else {
+        storeRef.current = []
+      }
+      setStore(props.gameDetails);
     }, []);
 
     useEffect(() => {
         if (props.gameDetails && props.gameDetails.length !== storeRef.current.length) {
-            setStore([...storeRef.current, props.gameDetails]);
-            storeRef.current = [...storeRef.current, props.gameDetails];
+          setStore([...storeRef.current, props.gameDetails]);
+          storeRef.current = [...storeRef.current, props.gameDetails];
         }
     }, [props.gameDetails]);
 
@@ -26,6 +30,7 @@ const DisputeComments = (props) => {
           return <li key={i}>{value.expansion}</li>
         })}
       </ul>
+      {/*if array is empty - message about no comments yet*/}
     </>
   )
 }

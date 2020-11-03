@@ -1,53 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import DisputeComments from '../DisputeComments/DisputeComments'
 
-// function App() {
-//   // Similar to useState but first arg is key to the value in local storage.
-//   const [name, setName] = useLocalStorage('name', 'Bob');
-//
-//   return (
-//     <div>
-//       <input
-//         type="text"
-//         placeholder="Enter your name"
-//         value={name}
-//         onChange={e => setName(e.target.value)}
-//       />
-//     </div>
-//   );
-// }
-
-function parseTime( t ) {
-  const d = new Date();
-  const time = t.match( /(\d+)(?::(\d\d))?\s*(p?)/ );
-  d.setHours( parseInt( time[1]) + (time[3] ? 12 : 0) );
-  d.setMinutes( parseInt( time[2]) || 0 );
-  return d;
-}
-
 const RuleDisputeForm = () => {
   const [expansion, setExpansion] = useState('');
   const [players, setPlayers] = useState(1);
   const [time, setTime] = useState(0);
   const [officialRule, setOfficialRule] = useState('');
   const [interpretation, setInterpretation] = useState('');
-  const [rules, setRules] = useState({
+  const [singleDispute, setSingleDispute] = useState({
     expansion: '',
     players,
     gameplayTime: 0,
     officialRule: 0,
     interpretation: '',
   });
+  const [allDisputes, setAllDisputes] = useState([])
 
-  const [gameDetails, setGameDetails] = useLocalStorage('gameDetails', rules);
+  const [gameDetails, setGameDetails] = useLocalStorage('gameDetails', []);
+
 
   const submitForm = (event) => {
     event.preventDefault();
-    setGameDetails(rules);
+    // setGameDetails(previousValue => {
+    //   console.log(previousValue)
+    //   [...previousValue, singleDispute]
+    // });
+    setGameDetails(singleDispute)
+    console.log("what is useLocalStorage eval", gameDetails)
   };
 
   useEffect(() => {
-    setRules({
+    setSingleDispute({
       expansion: expansion,
       players: players,
       time: time,
@@ -85,9 +68,9 @@ const RuleDisputeForm = () => {
         />
         <label>Gameplay time: </label>
         <input
-        type='time'
+        type='number'
         name='time'
-        onChange={event => setTime(parseTime(event.target.value))}
+        onChange={event => setTime(parseInt(event.target.value))}
         />
         <label>Official Rule: </label>
         <input
@@ -110,6 +93,7 @@ const RuleDisputeForm = () => {
 };
 
 function getLocalStorage(key, initialValue) {
+
   const [storedValue, setStoredValue] = useState(() => {
     try {
       // Get from local storage by key
@@ -137,9 +121,11 @@ function useLocalStorage(key, initialValue) {
   const setValue = value => {
     try {
       // Allow value to be a function so we have same API as useState
+      console.log('value,', value, typeof value)
       const valueToStore =
-          value instanceof Function ? value(storedValue) : value;
+      value instanceof Function ? value(storedValue) : value;
       // Save state
+      console.log('valueToStore', valueToStore)
       setStoredValue(valueToStore);
 
       // const parsedValue = JSON.parse(storedValue);
@@ -160,14 +146,6 @@ function useLocalStorage(key, initialValue) {
 
   return [storedValue, setValue];
 }
-
-// const Image = (props) => {
-//   const [width, setWidth] = React.useState(0);
-//   React.useEffect(() => {
-//     setWidth(window.innerWidth);
-//   });
-//   return <img src={props.src} style={{ width: width }} />;
-// };
 
 
 export default RuleDisputeForm;
