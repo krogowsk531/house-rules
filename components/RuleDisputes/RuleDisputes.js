@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import Comments from '../Comments/Comments.js'
 import { useLocalStorage } from '../../hooks/hooks.js';
 
 const RuleDisputeForm = () => {
@@ -60,6 +61,7 @@ const RuleDisputeForm = () => {
       />
       <button onClick={(event) => submitForm(event)}>SUBMIT</button>
     </form>
+    <Comments />
   </section>
   )
 }
