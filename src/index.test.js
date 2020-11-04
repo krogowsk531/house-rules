@@ -7,13 +7,13 @@ import '@testing-library/jest-dom/extend-expect'
 // jest.mock('../pages/api/apiCalls')
 
 describe('Homepage', () => {
-    let props;
+  let props;
   beforeEach(() => {
     props = global.getStaticProps = {
-        games: [
-            {id:"1", name: "game1", image: "game1url"},
-            {id:"2", name: "game2", image: "game2url"}
-        ]
+      games: [
+        {id:"1", name: "game1", image: "game1url"},
+        {id:"2", name: "game2", image: "game2url"}
+      ]
     }
         
   })

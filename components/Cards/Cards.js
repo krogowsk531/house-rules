@@ -4,24 +4,23 @@ import SingleCard from "../SingleCard/SingleCard"
 import RuleDisputeForm from '../RuleDisputeForm/RuleDisputeForm'
 
 const Cards = (props) => {
-    const formattedCards = props.games.map((game) => {
-    return <SingleCard
-      image={game.image}
-      title={game.name}
-      id={game.id}
-      key={game.id}
-      testid={game.name}
-      />
-    })
+  const formattedCards = props.games.map((game) => {
+  return <SingleCard
+    image={game.image}
+    title={game.name}
+    id={game.id}
+    key={game.id}
+    testid={game.name}
+    />
+  })
 
-return (
+  return (
     <div>
     Cards
     { formattedCards }
 
     </div>
-)
-
+  )
 }
 
 export default Cards
