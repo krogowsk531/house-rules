@@ -1,102 +1,68 @@
 import React from 'react'
 import { useState } from 'react';
-
-// function App() {
-//   // Similar to useState but first arg is key to the value in local storage.
-//   const [name, setName] = useLocalStorage('name', 'Bob');
-//
-//   return (
-//     <div>
-//       <input
-//         type="text"
-//         placeholder="Enter your name"
-//         value={name}
-//         onChange={e => setName(e.target.value)}
-//       />
-//     </div>
-//   );
-// }
-
-
+import { useLocalStorage } from '../../hooks/hooks.js';
 
 const RuleDisputeForm = () => {
-  const [expansion, setExpansion] = useLocalStorage('expansion', 'setExpansion')
-  // const [number, setNumber] = useLocalStorage('number', 'setNumber')
-    return(
-      <section>
-      <form>
-        <label>Expansion Name: </label>
-        <input
-        type='text'
-        name='expansion'
-        value={expansion}
-        onChange={event =>setExpansion(event.target.value)}
-        />
-        <label>Number of players: </label>
-        <input
-        type='text'
-        name='number'
-        value={number}
-        onChange={event =>setNumber(event.target.value)}
-        />
-        <label>Gameplay time: </label>
-        <input
-        type='time'
-        name='time'
-        />
-        <label>Official Rule: </label>
-        <input
-        type='text'
-        name='officialRule'
-        />
-        <label>Interpretation of Rule: </label>
-        <input
-        type='text'
-        name='InterpretationRule'
-        />
+  const [expansion, setExpansion] = useState('');
+  const [players, setPlayers] = useState(1);
+  const [time, setTime] = useState(0);
+  const [officialRule, setOfficialRule] = useState('');
+  const [interpretation, setInterpretation] = useState('');
+  const [singleDispute, setSingleDispute] = useState({
+    expansion: '',
+    players,
+    gameplayTime: 0,
+    officialRule: 0,
+    interpretation: '',
+  });
 
-        <button>SUBMIT</button>
-      </form>
-      </section>
-  )}
+  const [gameDetails, setGameDetails] = useLocalStorage('gameDetails', [])
 
-  // function useLocalStorage(key, initialValue) {
-  // // State to store our value
-  // // Pass initial state function to useState so logic is only executed once
-  // const [storedValue, setStoredValue] = useState(() => {
-  //   try {
-  //     // Get from local storage by key
-  //     const item = window.localStorage.getItem(key);
-  //     // Parse stored json or if none return initialValue
-  //     return item ? JSON.parse(item) : initialValue;
-  //   } catch (error) {
-  //     // If error also return initialValue
-  //     console.log(error);
-  //     return initialValue;
-  //   }
-  // });
+  const submitForm = (event) =>{
+    event.preventDefault();
+    setGameDetails(singleDispute)
+  }
 
-function useLocalStorage(key, initialValue) {
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem(key)
-      return item ? JSON.parse(item): initialValue
-    } catch (error) {
-      console.log(error)
-      return initialValue;
-    }
-  })
+  return(
+    <section>
+    <form>
+      <label>Expansion Name: </label>
+      <input
+      type='text'
+      name='expansion'
+      value={expansion}
+      onChange={event => setExpansion(event.target.value)}
+      />
+      <label>Number of players: </label>
+      <input
+      type='number'
+      name='number'
+      value={players}
+      onChange={event => setPlayers(parseInt(event.target.value))}
+      />
+      <label>Gameplay time in mintues: </label>
+      <input
+      type='number'
+      name='time'
+      onChange={event => setTime(parseTime(event.target.value))}
+      />
+      <label>Official Rule: </label>
+      <input
+      type='text'
+      name='officialRule'
+      onChange={event => setOfficialRule(event.target.value)}
+      />
+      <label>Interpretation of Rule: </label>
+      <input
+      type='text'
+      name='InterpretationRule'
+      onChange={event => setInterpretation(event.target.value)}
+      />
+      <button onClick={(event) => submitForm(event)}>SUBMIT</button>
+    </form>
+  </section>
+  )
 }
-
-// const Image = (props) => {
-//   const [width, setWidth] = React.useState(0);
-//   React.useEffect(() => {
-//     setWidth(window.innerWidth);
-//   });
-//   return <img src={props.src} style={{ width: width }} />;
-// };
-
-
 export default RuleDisputeForm;
 
-//eventually upvote, downvote, and link
+
