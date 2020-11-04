@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Comments from '../Comments/Comments.js'
 import { useLocalStorage } from '../../hooks/hooks.js';
 
@@ -8,14 +8,30 @@ const RuleDisputeForm = () => {
   const [numPlayers, setNumPlayers] = useState(1);
   const [minutesPlayed, setMinutesPlayed] = useState(0);
   const [officialRule, setOfficialRule] = useState('');
-  const [ruleInterpretation, setRuleInterpretation] = useState('');
+  const [ruleDispute, setRuleDispute] = useState('');
   const [singleDispute, setSingleDispute] = useState({
     expansion: '',
     numPlayers,
-    gameplayTime: 0,
+    minutesPlayed: 0,
     officialRule: 0,
-    ruleInterpretation: '',
+    ruleDispute: '',
   });
+
+  useEffect(() => {
+    setSingleDispute({
+      expansion,
+      numPlayers,
+      minutesPlayed,
+      officialRule,
+      ruleDispute
+    })
+  }, [
+    expansion,
+    numPlayers,
+    minutesPlayed,
+    officialRule,
+    ruleDispute
+  ])
 
   const [allDisputes, setAllDisputes] = useLocalStorage('allDisputes', [])
 
@@ -58,9 +74,9 @@ const RuleDisputeForm = () => {
       <label>Interpretation of Rule: </label>
       <input
       type='text'
-      name='ruleInterpretation'
-      value={ruleInterpretation}
-      onChange={event => setRuleInterpretation(event.target.value)}
+      name='ruleDispute'
+      value={ruleDispute}
+      onChange={event => setRuleDispute(event.target.value)}
       />
       <button onClick={(event) => submitForm(event)}>SUBMIT</button>
     </form>
