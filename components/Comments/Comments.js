@@ -1,4 +1,4 @@
-const Comments = () => {
+const Comments = (props) => {
   return (
     <>DISPUTE COMMENTS</>
   )

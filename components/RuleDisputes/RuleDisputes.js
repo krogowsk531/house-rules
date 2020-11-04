@@ -80,7 +80,7 @@ const RuleDisputeForm = () => {
       />
       <button onClick={(event) => submitForm(event)}>SUBMIT</button>
     </form>
-    <Comments />
+    <Comments allDisputes={allDisputes} />
   </section>
   )
 }
