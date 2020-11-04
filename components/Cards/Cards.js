@@ -16,9 +16,8 @@ const Cards = (props) => {
 
   return (
     <div>
-    Cards
-    { formattedCards }
-
+      Cards
+      { formattedCards }
     </div>
   )
 }

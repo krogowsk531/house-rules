@@ -28,8 +28,9 @@ describe('Homepage', () => {
   })
   it('should have cards that are links', () => {
     render(
-        <Home games={props.games}/>
-      )
+      <Home games={props.games}/>
+    )
+      
     screen.debug()
   })
 })
