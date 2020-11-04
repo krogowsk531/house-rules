@@ -10,7 +10,6 @@ const Cards = (props) => {
     title={game.name}
     id={game.id}
     key={game.id}
-    testid={game.name}
     />
   })
 

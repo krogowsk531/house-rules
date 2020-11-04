@@ -1,10 +1,15 @@
 import Home from '../pages/index.js'
+import Cards from '../components/Cards/Cards.js'
 import { screen, render, waitFor } from '@testing-library/react'
 import { getGames } from '../pages/api/apiCalls'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
 // jest.mock('../pages/api/apiCalls')
+
+import React from 'react'
+import ReactDOM from 'react-dom/server'
+import Link from 'next/link'
 
 describe('Homepage', () => {
   let props;
@@ -23,14 +28,29 @@ describe('Homepage', () => {
     )
 
     expect(screen.getByText("House Rules")).toBeInTheDocument()
-    expect(screen.getByTestId("game1")).toBeInTheDocument()
-    expect(screen.getByTestId("game2")).toBeInTheDocument()
+    expect(screen.getByAltText("game1")).toBeInTheDocument()
+    expect(screen.getByAltText("game2")).toBeInTheDocument()
   })
   it('should have cards that are links', () => {
+
+    // jest.mock('next/link', () => ({ Cards }) => Cards)
+    // userEvent.click(screen.getByAltText("game1"))
+
+    const element = React.createElement(
+      Link,
+      {
+          href: '/GameDetails/[gameid]'
+      },
+      React.createElement('a', {}, 'to another page')
+    )
+    const html = ReactDOM.renderToString(element)
+    expect(html).toMatchInlineSnapshot(
+      `"<a href=\\"/GameDetails/[gameid]\\" data-reactroot=\\"\\">to another page</a>"`
+    )
     render(
       <Home games={props.games}/>
     )
-      
+       userEvent.click(element)
     screen.debug()
   })
 })
