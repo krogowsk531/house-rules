@@ -33,7 +33,7 @@ const RuleDisputeForm = () => {
     ruleDispute
   ])
 
-  const [allDisputes, setAllDisputes] = useLocalStorage('allDisputes', [])
+  const [allDisputes, setAllDisputes] = useAllDisputeComments('allDisputes', [])
 
   const submitForm = (event) =>{
     event.preventDefault();
@@ -83,6 +83,23 @@ const RuleDisputeForm = () => {
     <Comments allDisputes={allDisputes} />
   </section>
   )
+}
+
+function useLocalStorage(key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window ? window.localStorage.getItem(key) : null
+      return item ? JSON.parse(item) : initialValue
+    } catch (error) {
+      console.log(error)
+      return initialValue
+    }
+  })
+  return [storedValue, setStoredValue]
+}
+
+function useAllDisputeComments(key) {
+  const [ storedValue, setStoredValue ] = useLocalStorage('allDisputes')
 }
 export default RuleDisputeForm;
 
