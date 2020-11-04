@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Comments from '../Comments/Comments.js'
-import { useLocalStorage } from '../../hooks/hooks.js';
+// import { useLocalStorage } from '../../hooks/hooks.js';
 
 const RuleDisputeForm = () => {
   const [expansion, setExpansion] = useState('');
@@ -100,7 +100,23 @@ function useLocalStorage(key, initialValue) {
 
 function useAllDisputeComments(key) {
   const [ storedValue, setStoredValue ] = useLocalStorage('allDisputes')
+
+  const setValue = value => {
+    try {
+      setStoredValue(value)
+      let itemToSet = [value]
+      if (storedValue) {
+        const parsedStoredValue = JSON.parse(window.localStorage.getItem('allDisputes'))
+        itemToSet = [...parsedStoredValue, value]
+      }
+      window.localStorage.setItem(key, JSON.stringify(itemToSet));  
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  return [storedValue, setValue]
 }
+
 export default RuleDisputeForm;
 
 
