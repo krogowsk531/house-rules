@@ -32,25 +32,22 @@ describe('Homepage', () => {
     expect(screen.getByAltText("game2")).toBeInTheDocument()
   })
   it('should have cards that are links', () => {
-
-    // jest.mock('next/link', () => ({ Cards }) => Cards)
-    // userEvent.click(screen.getByAltText("game1"))
-
     const element = React.createElement(
-      Link,
+      'a',
       {
-          href: '/GameDetails/[gameid]'
+        href: '/GameDetails/[gameid]',
+        // query: { gameid: "1"}
       },
-      React.createElement('a', {}, 'to another page')
+      "to another page"
     )
     const html = ReactDOM.renderToString(element)
     expect(html).toMatchInlineSnapshot(
       `"<a href=\\"/GameDetails/[gameid]\\" data-reactroot=\\"\\">to another page</a>"`
     )
-    render(
-      <Home games={props.games}/>
-    )
-       userEvent.click(element)
-    screen.debug()
+    // render(
+    //   <Home games={props.games}/>
+    // )
+    // userEvent.click(screen.getByAltText("game1"))
+    // screen.debug()
   })
 })
