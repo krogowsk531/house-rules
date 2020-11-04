@@ -5,23 +5,23 @@ import { useLocalStorage } from '../../hooks/hooks.js';
 
 const RuleDisputeForm = () => {
   const [expansion, setExpansion] = useState('');
-  const [players, setPlayers] = useState(1);
-  const [time, setTime] = useState(0);
+  const [numPlayers, setNumPlayers] = useState(1);
+  const [minutesPlayed, setMinutesPlayed] = useState(0);
   const [officialRule, setOfficialRule] = useState('');
-  const [interpretation, setInterpretation] = useState('');
+  const [ruleInterpretation, setRuleInterpretation] = useState('');
   const [singleDispute, setSingleDispute] = useState({
     expansion: '',
-    players,
+    numPlayers,
     gameplayTime: 0,
     officialRule: 0,
-    interpretation: '',
+    ruleInterpretation: '',
   });
 
-  const [gameDetails, setGameDetails] = useLocalStorage('gameDetails', [])
+  const [allDisputes, setAllDisputes] = useLocalStorage('allDisputes', [])
 
   const submitForm = (event) =>{
     event.preventDefault();
-    setGameDetails(singleDispute)
+    setAllDisputes(singleDispute)
   }
 
   return(
@@ -38,14 +38,14 @@ const RuleDisputeForm = () => {
       <input
       type='number'
       name='number'
-      value={players}
-      onChange={event => setPlayers(parseInt(event.target.value))}
+      value={numPlayers}
+      onChange={event => setNumPlayers(parseInt(event.target.value))}
       />
       <label>Gameplay time in mintues: </label>
       <input
       type='number'
-      name='time'
-      onChange={event => setTime(parseTime(event.target.value))}
+      name='minutesPlayed'
+      onChange={event => setMinutesPlayed(parseInt(event.target.value))}
       />
       <label>Official Rule: </label>
       <input
@@ -56,8 +56,8 @@ const RuleDisputeForm = () => {
       <label>Interpretation of Rule: </label>
       <input
       type='text'
-      name='InterpretationRule'
-      onChange={event => setInterpretation(event.target.value)}
+      name='ruleInterpretation'
+      onChange={event => setRuleInterpretation(event.target.value)}
       />
       <button onClick={(event) => submitForm(event)}>SUBMIT</button>
     </form>
