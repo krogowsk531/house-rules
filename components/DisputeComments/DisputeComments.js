@@ -27,7 +27,17 @@ const DisputeComments = (props) => {
       DISPUTE COMMENTS
       <ul>
         {store && store.map((value, i) => {
-          return <li key={i}>{value.expansion}</li>
+          console.log(value)
+          return (
+            <section key={i}>
+              <h3>Dispute {i+1}</h3>
+              <p>Expansion: {value.expansion}</p>
+              <p>Number of Players: {value.players}</p>
+              <p>Game Playtime: {value.time}</p>
+              <p>Official Rule: {value.officialRule}</p>
+              <p>Your House Rule: {value.interpretation}</p>
+            </section>
+          )
         })}
       </ul>
       {/*if array is empty - message about no comments yet*/}

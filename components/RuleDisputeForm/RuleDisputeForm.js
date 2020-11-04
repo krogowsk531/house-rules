@@ -14,7 +14,6 @@ const RuleDisputeForm = () => {
     officialRule: 0,
     interpretation: '',
   });
-  // const [allDisputes, setAllDisputes] = useState([])
 
   const [allDisputes, setAllDisputes] = useLocalStorage('allDisputes', []);
 
@@ -95,6 +94,7 @@ const RuleDisputeForm = () => {
 //because render on server - need the window check with ternary for example
 function useGetLocalStorage(key, initialValue) {
 
+  //defining array of two values using useState
   const [storedValue, setStoredValue] = useState(() => {
     try {
       // Get from local storage by key
@@ -111,10 +111,11 @@ function useGetLocalStorage(key, initialValue) {
   return [storedValue, setStoredValue];
 }
 
-function useLocalStorage(key, initialValue) {
+function useLocalStorage(key) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
 
+  //destructuring - just abstracting from useGetLocalStorage itself
   const [ storedValue, setStoredValue ] = useGetLocalStorage('allDisputes');
 
   // Return a wrapped version of useState's setter function that ...
@@ -124,20 +125,19 @@ function useLocalStorage(key, initialValue) {
     try {
       // Allow value to be a function so we have same API as useState
       // console.log('value,', value, typeof value)
-      //check isntanceof Function -> 
-      const valueToStore =
-      value instanceof Function ? value(storedValue) : value;
-      // Save state
-      // console.log('valueToStore', valueToStore)
-      setStoredValue(valueToStore);
+      //check isntanceof Function ->
+      // Save state- changes value of storedValue
+      // console.log('value', value)
+      setStoredValue(value);
 
       // const parsedValue = JSON.parse(storedValue);
-      let itemToSet = [valueToStore];
+      let itemToSet = [value];
 
+      //need the if condition to check if a value already exists in localStorage
       if (storedValue) {
         const parsedStoredValue = JSON.parse(window.localStorage.getItem('allDisputes'));
 
-        itemToSet = [...parsedStoredValue, ...itemToSet];
+        itemToSet = [...parsedStoredValue, value];
       }
       // Save to local storage
       window.localStorage.setItem(key, JSON.stringify(itemToSet));

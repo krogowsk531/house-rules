@@ -1,4 +1,6 @@
-function getLocalStorage(key, initialValue) {
+function useGetLocalStorage(key, initialValue) {
+
+  //defining array of two values using useState
   const [storedValue, setStoredValue] = useState(() => {
     try {
       // Get from local storage by key
@@ -15,29 +17,19 @@ function getLocalStorage(key, initialValue) {
   return [storedValue, setStoredValue];
 }
 
-function useLocalStorage(key, initialValue) {
-  // State to store our value
-  // Pass initial state function to useState so logic is only executed once
+function useLocalStorage(key) {
 
-  const [ storedValue, setStoredValue ] = getLocalStorage('gameDetails');
-
-  // Return a wrapped version of useState's setter function that ...
-  // ... persists the new value to localStorage.
+  const [ storedValue, setStoredValue ] = useGetLocalStorage('allDisputes');
   const setValue = value => {
+    console.log('value', value)
     try {
-      // Allow value to be a function so we have same API as useState
-      const valueToStore =
-          value instanceof Function ? value(storedValue) : value;
-      // Save state
-      setStoredValue(valueToStore);
+      setStoredValue(value);
 
-      // const parsedValue = JSON.parse(storedValue);
-      let itemToSet = [valueToStore];
-
+      let itemToSet = [value];
       if (storedValue) {
-        const parsedStoredValue = JSON.parse(window.localStorage.getItem('gameDetails'));
+        const parsedStoredValue = JSON.parse(window.localStorage.getItem('allDisputes'));
 
-        itemToSet = [...parsedStoredValue, ...itemToSet];
+        itemToSet = [...parsedStoredValue, value];
       }
       // Save to local storage
       window.localStorage.setItem(key, JSON.stringify(itemToSet));
@@ -49,3 +41,6 @@ function useLocalStorage(key, initialValue) {
 
   return [storedValue, setValue];
 }
+
+
+export default RuleDisputeForm;
