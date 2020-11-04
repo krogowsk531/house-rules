@@ -1,7 +1,7 @@
 import Home from '../pages/index.js'
 import { screen, render, waitFor } from '@testing-library/react'
 import { getGames } from '../pages/api/apiCalls'
-// may need userEvent library install
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
 // jest.mock('../pages/api/apiCalls')
@@ -21,10 +21,15 @@ describe('Homepage', () => {
     render(
       <Home games={props.games}/>
     )
-    // console.log(props)
-    screen.debug()
+
     expect(screen.getByText("House Rules")).toBeInTheDocument()
     expect(screen.getByTestId("game1")).toBeInTheDocument()
     expect(screen.getByTestId("game2")).toBeInTheDocument()
+  })
+  it('should have cards that are links', () => {
+    render(
+        <Home games={props.games}/>
+      )
+    screen.debug()
   })
 })
