@@ -45,18 +45,21 @@ const RuleDisputeForm = () => {
       <input
       type='number'
       name='minutesPlayed'
+      value={minutesPlayed}
       onChange={event => setMinutesPlayed(parseInt(event.target.value))}
       />
       <label>Official Rule: </label>
       <input
       type='text'
       name='officialRule'
+      value={officialRule}
       onChange={event => setOfficialRule(event.target.value)}
       />
       <label>Interpretation of Rule: </label>
       <input
       type='text'
       name='ruleInterpretation'
+      value={ruleInterpretation}
       onChange={event => setRuleInterpretation(event.target.value)}
       />
       <button onClick={(event) => submitForm(event)}>SUBMIT</button>
