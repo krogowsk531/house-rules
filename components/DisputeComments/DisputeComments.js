@@ -15,10 +15,10 @@ const DisputeComments = (props) => {
     }, []);
 
     useEffect(() => {
-        if (props.allDisputes && props.allDisputes.length !== storeRef.current.length) {
-          setStore([...storeRef.current, props.allDisputes]);
-          storeRef.current = [...storeRef.current, props.allDisputes];
-        }
+      if (props.allDisputes && props.allDisputes.length !== storeRef.current.length) {
+        setStore([...storeRef.current, props.allDisputes]);
+        storeRef.current = [...storeRef.current, props.allDisputes];
+      }
     }, [props.allDisputes]);
 
   // second arg in useEffect? - something needs to change for automatic comment generation on page on submit
