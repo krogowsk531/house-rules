@@ -1,5 +1,5 @@
 import { getGames, getSingleGame } from '../api/apiCalls.js'
-import RuleDisputeForm from '../../components/RuleDisputeForm/RuleDisputeForm.js'
+import RuleDisputes from '../../components/RuleDisputes/RuleDisputes.js'
 
 
 export async function getStaticPaths() {
@@ -33,7 +33,7 @@ export default function GameDetails({ game }) {
       <h3 className="game-detail-heading">Estimate Play Time</h3>
       <p className="game-detail-para">{game.games[0].max_playtime}</p>
       <h3 className="game-detail-heading"><a href={game.games[0].rules_url}>Official Game Rules</a></h3>
-      <RuleDisputeForm />
+      <RuleDisputes />
     </>
 
 
