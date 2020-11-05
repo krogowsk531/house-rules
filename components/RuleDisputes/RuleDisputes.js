@@ -48,6 +48,7 @@ const RuleDisputeForm = () => {
         <input
         type='text'
         name='expansion'
+        placeholder='expansion name'
         value={expansion}
         onChange={event => setExpansion(event.target.value)}
         />
@@ -57,6 +58,7 @@ const RuleDisputeForm = () => {
         min={1}
         max={12}
         name='number'
+        placeholder='number of players'
         value={numPlayers}
         onChange={event => setNumPlayers(parseInt(event.target.value))}
         />
@@ -64,20 +66,23 @@ const RuleDisputeForm = () => {
         <input
         type='number'
         name='minutesPlayed'
+        placeholder='minutes played'
         value={minutesPlayed}
         onChange={event => setMinutesPlayed(parseInt(event.target.value))}
         />
-        <label>Official Rule: </label>
+        <label>Game's Official Rule: </label>
         <input
         type='text'
         name='officialRule'
+        placeholder='official rule'
         value={officialRule}
         onChange={event => setOfficialRule(event.target.value)}
         />
-        <label>Interpretation of Rule: </label>
+        <label>House Rule:</label>
         <input
         type='text'
         name='ruleDispute'
+        placeholder='your house rule'
         value={ruleDispute}
         onChange={event => setRuleDispute(event.target.value)}
       />
