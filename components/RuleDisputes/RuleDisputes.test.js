@@ -24,4 +24,10 @@ describe('Rule Disputes', () => {
     userEvent.type(screen.getByPlaceholderText("expansion name"), "stretchy stretch")
     expect(screen.getByDisplayValue("stretchy stretch")).toBeInTheDocument()
   })
+  it('should not let user submit form without manadatory values', () => {
+    render(
+      <RuleDisputes />
+    )
+    expect(screen.getByText("SUBMIT")).toBeDisabled()
+  })
 })
