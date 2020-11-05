@@ -5,6 +5,14 @@ const Comments = (props) => {
 
   const storeRef = useRef(); 
 
+  useEffect(() => {
+    if (props.allDisputes) {
+      storeRef.current = props.allDisputes;
+    } else {
+      storeRef.current = []
+    }
+    setStore(props.allDisputes);
+  }, []);
 
   return (
     <>
