@@ -53,6 +53,8 @@ const RuleDisputeForm = () => {
       <label>Number of players: </label>
       <input
       type='number'
+      // min={1}
+      // max={12}
       name='number'
       value={numPlayers}
       onChange={event => setNumPlayers(parseInt(event.target.value))}
@@ -78,7 +80,12 @@ const RuleDisputeForm = () => {
       value={ruleDispute}
       onChange={event => setRuleDispute(event.target.value)}
       />
-      <button onClick={(event) => submitForm(event)}>SUBMIT</button>
+      <button 
+        disabled={ruleDispute === '' || officialRule === ''}
+        onClick={(event) => submitForm(event)}
+      >
+        SUBMIT
+      </button>
     </form>
     <Comments allDisputes={allDisputes} />
   </section>
