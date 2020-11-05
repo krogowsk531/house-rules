@@ -14,6 +14,13 @@ const Comments = (props) => {
     setStore(props.allDisputes);
   }, []);
 
+  useEffect(() => {
+    if(props.allDisputes && props.allDisputes.length !== storeRef.current.length) {
+      setStore([...storeRef.current, props.allDisputes]);
+      storeRef.current = [...storeRef.current, props.allDisputes];
+    }
+  }, [props.allDisputes]); 
+
   return (
     <>
       <h3>DISPUTED COMMENTS</h3>
