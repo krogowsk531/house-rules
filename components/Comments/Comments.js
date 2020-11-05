@@ -31,9 +31,9 @@ const Comments = (props) => {
                 <h4>Dispute {i+1}</h4>
                 <p>Expansion: {value.expansion}</p>
                 <p>Number of Players: {value.numPlayers}</p>
-                <p>Game Playtime: {value.minutesPlayed}</p>
+                <p>Game Playtime: {value.minutesPlayed} minutes</p>
                 <p>Official Rule: {value.officialRule}</p>
-                <p>Your House Rule: {value.interpretation}</p>
+                <p>Your House Rule: {value.ruleDispute}</p>
               </section>
             )
           })}

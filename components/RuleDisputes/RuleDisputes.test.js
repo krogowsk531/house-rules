@@ -4,7 +4,7 @@ import RuleDisputes from './RuleDisputes.js';
 import userEvent from '@testing-library/user-event';
 
 describe('Rule Disputes', () => {
-  it('should render a form with inputs', () => {
+  it('should render a form with inputs and comments section', () => {
     render(
       <RuleDisputes />
     )
@@ -16,6 +16,7 @@ describe('Rule Disputes', () => {
     expect(screen.getByPlaceholderText("official rule")).toBeInTheDocument()
     expect(screen.getByPlaceholderText("your house rule")).toBeInTheDocument()
     expect(screen.getByRole("button")).toBeInTheDocument()
+    expect(screen.getByText("DISPUTED COMMENTS")).toBeInTheDocument()
   })
   it('should update as data is entered into inputs', () => {
     render(
@@ -29,5 +30,23 @@ describe('Rule Disputes', () => {
       <RuleDisputes />
     )
     expect(screen.getByText("SUBMIT")).toBeDisabled()
+  })
+  it('should be able to show a new comment a user submits', () => {
+    render(
+      <RuleDisputes />
+    )
+    userEvent.type(screen.getByPlaceholderText("expansion name"), "stretchy stretch")
+    userEvent.type(screen.getByPlaceholderText("number of players"), '4')
+    userEvent.type(screen.getByPlaceholderText("minutes played"), '50')
+    userEvent.type(screen.getByPlaceholderText("official rule"), "this is a very official rule")
+    userEvent.type(screen.getByPlaceholderText("your house rule"), "no i like this better")
+    userEvent.click(screen.getByText("SUBMIT"))
+    screen.debug()
+
+    expect(screen.getByText("Dispute 1")).toBeInTheDocument()
+    expect(screen.getByText("Expansion: stretchy stretch")).toBeInTheDocument()
+    expect(screen.getByText("Game Playtime: 50 minutes")).toBeInTheDocument()
+    expect(screen.getByText("Official Rule: this is a very official rule")).toBeInTheDocument()
+    expect(screen.getByText("Your House Rule: no i like this better")).toBeInTheDocument()
   })
 })

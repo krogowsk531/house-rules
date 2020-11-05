@@ -7,17 +7,17 @@ describe('Comment', () => {
         const allDisputes=[
             {
                 expansion: 'funtime',
-                players: 2,
+                numplayers: 2,
                 minutesPlayed: 10,
                 officialRule: 'none',
-                interpretation: 'add details'
+                ruleDispute: 'add details'
             },
             {
                 expansion: 'number2',
                 numPlayers: 12,
                 minutesPlayed: 100,
                 officialRule: 'free space',
-                interpretation: 'go to start'
+                ruleDispute: 'go to start'
             }
         ]
         render(
