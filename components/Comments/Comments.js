@@ -26,13 +26,12 @@ const Comments = (props) => {
       <h3>DISPUTED COMMENTS</h3>
       <ul>
         {store && store.map((value, i) => {
-            console.log(value)
             return (
               <section key={i}>
                 <h4>Dispute {i+1}</h4>
                 <p>Expansion: {value.expansion}</p>
-                <p>Number of Players: {value.players}</p>
-                <p>Game Playtime: {value.time}</p>
+                <p>Number of Players: {value.numPlayers}</p>
+                <p>Game Playtime: {value.minutesPlayed}</p>
                 <p>Official Rule: {value.officialRule}</p>
                 <p>Your House Rule: {value.interpretation}</p>
               </section>
