@@ -42,43 +42,44 @@ const RuleDisputeForm = () => {
 
   return(
     <section>
-    <form>
-      <label>Expansion Name: </label>
-      <input
-      type='text'
-      name='expansion'
-      value={expansion}
-      onChange={event => setExpansion(event.target.value)}
-      />
-      <label>Number of players: </label>
-      <input
-      type='number'
-      min={1}
-      max={12}
-      name='number'
-      value={numPlayers}
-      onChange={event => setNumPlayers(parseInt(event.target.value))}
-      />
-      <label>Gameplay time in mintues: </label>
-      <input
-      type='number'
-      name='minutesPlayed'
-      value={minutesPlayed}
-      onChange={event => setMinutesPlayed(parseInt(event.target.value))}
-      />
-      <label>Official Rule: </label>
-      <input
-      type='text'
-      name='officialRule'
-      value={officialRule}
-      onChange={event => setOfficialRule(event.target.value)}
-      />
-      <label>Interpretation of Rule: </label>
-      <input
-      type='text'
-      name='ruleDispute'
-      value={ruleDispute}
-      onChange={event => setRuleDispute(event.target.value)}
+      <h2>Dispute Game Rule</h2>
+      <form>
+        <label>Expansion Name: </label>
+        <input
+        type='text'
+        name='expansion'
+        value={expansion}
+        onChange={event => setExpansion(event.target.value)}
+        />
+        <label>Number of players: </label>
+        <input
+        type='number'
+        min={1}
+        max={12}
+        name='number'
+        value={numPlayers}
+        onChange={event => setNumPlayers(parseInt(event.target.value))}
+        />
+        <label>Gameplay time in mintues: </label>
+        <input
+        type='number'
+        name='minutesPlayed'
+        value={minutesPlayed}
+        onChange={event => setMinutesPlayed(parseInt(event.target.value))}
+        />
+        <label>Official Rule: </label>
+        <input
+        type='text'
+        name='officialRule'
+        value={officialRule}
+        onChange={event => setOfficialRule(event.target.value)}
+        />
+        <label>Interpretation of Rule: </label>
+        <input
+        type='text'
+        name='ruleDispute'
+        value={ruleDispute}
+        onChange={event => setRuleDispute(event.target.value)}
       />
       <button 
         disabled={ruleDispute === '' || officialRule === ''}
