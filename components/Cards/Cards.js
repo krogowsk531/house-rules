@@ -1,7 +1,4 @@
-// import SingleCard from 'components/SingleCard/SingleCard.js'
-
 import SingleCard from "../SingleCard/SingleCard"
-import RuleDisputeForm from '../RuleDisputeForm/RuleDisputeForm'
 
 const Cards = (props) => {
   const formattedCards = props.games.map((game) => {
