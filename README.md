@@ -27,28 +27,31 @@
 * Create a functioning app while learning a new technology
 * Decide what the most viable product for the app will be
 * Use an external API of the teams choosing
-* The data from the API must be able to be manipulated by the user
 * To have a multipage app using routing
 
 **Wins**
 
-* Learning and working with Next.js in a collaborative environment with a set deadline
+* Learning and working with Next.js in a collaborative environment given a short deadline of a week and a half
 * Incorporating Next.js features such as dynamic routing and server side rendering
-* Able to integrate Hooks and a complicated testing suite
+* Generated a way to bypass server side rendering with client side rendering in order to allow features that a user can interact with
+* Integrating regular and custom hooks in order to keep components functional for developer empathy
+* Working with an unfamiliar testing suite
 
 **Challenges**
 
 * Testing certain interactions of the app built with Next.js
 * Learning how to use custom hooks for the purpose of local storage
-* Next.js does not give access to the window object inside of components
-
+* Next.js does not give access to the window object inside of components because it is only available on the browser
 
 **Technologies Used**
 
-* JSX
 * Next.js
+* React
 * Hooks
-* JavaScript
+* Local Storage
+* Jest and React testing libraries
+* Webpack and Babel
+* Fetch API
 
 **Spec Given**
 * https://frontend.turing.io/projects/module-3/stretch.html
