@@ -1,10 +1,8 @@
 import React from 'react'
-import { getByText, render, screen } from "@testing-library/react";
-import Comment from './Comments.js'
+import { render, screen } from "@testing-library/react";
 import Comments from './Comments.js';
 
 describe('Comment', () => {
-
     it('should render a card', () => {
         const allDisputes=[
             {
@@ -27,11 +25,11 @@ describe('Comment', () => {
                 allDisputes={allDisputes} 
             />,
         )
-       const expansion1 = screen.getByText('Expansion: funtime')
-       const players2 = screen.getByText('Number of Players: 12')
-       const minutesPlayed2 = screen.getByText('Game Playtime: 100')
-       const officialRule2 = screen.getByText('Official Rule: free space')
-       const interpretation1 = screen.getByText('Your House Rule: add details')
+        const expansion1 = screen.getByText('Expansion: funtime')
+        const players2 = screen.getByText('Number of Players: 12')
+        const minutesPlayed2 = screen.getByText('Game Playtime: 100')
+        const officialRule2 = screen.getByText('Official Rule: free space')
+        const interpretation1 = screen.getByText('Your House Rule: add details')
 
         expect(expansion1).toBeInTheDocument();
         expect(players2).toBeInTheDocument();
