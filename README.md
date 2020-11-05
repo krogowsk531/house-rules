@@ -8,10 +8,7 @@
 
 *A site for disputing game rules where a user can select a game, get information about that game and fill out a form that allows them to dispute a game rule. The rule dispute will persist through local storage in each individual game page so that a user can debate rules for the specified game.
 
-![Running Application](https://i.imgur.com/0HjXa57.gifv)
-
-[Alternative gif](https://i.imgur.com/0HjXa57.gifv0)
-[Alternative gif 2](https://i.imgur.com/0HjXa57.gif)
+![Running Application](https://i.imgur.com/0HjXa57.gif)
 
 **Installation**
 
