@@ -53,8 +53,8 @@ const RuleDisputeForm = () => {
       <label>Number of players: </label>
       <input
       type='number'
-      // min={1}
-      // max={12}
+      min={1}
+      max={12}
       name='number'
       value={numPlayers}
       onChange={event => setNumPlayers(parseInt(event.target.value))}
