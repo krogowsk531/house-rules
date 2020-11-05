@@ -27,12 +27,17 @@ describe('Comment', () => {
                 allDisputes={allDisputes} 
             />,
         )
-        screen.debug()
-        officialRule2 = screen.getByText('free space')
-        expansion1 = screen.getByText('funtime')
-        players2 = screen.getByText(12)
+       const expansion1 = screen.getByText('Expansion: funtime')
+       const players2 = screen.getByText('Number of Players: 12')
+       const minutesPlayed2 = screen.getByText('Game Playtime: 100')
+       const officialRule2 = screen.getByText('Official Rule: free space')
+       const interpretation1 = screen.getByText('Your House Rule: add details')
 
-        expect(officialRule2).toBeInTheDocument()
+        expect(expansion1).toBeInTheDocument();
+        expect(players2).toBeInTheDocument();
+        expect(minutesPlayed2).toBeInTheDocument();
+        expect(officialRule2).toBeInTheDocument();
+        expect(interpretation1).toBeInTheDocument();
     })
     
 })
