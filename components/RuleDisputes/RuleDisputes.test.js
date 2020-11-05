@@ -8,7 +8,7 @@ describe('Rule Disputes', () => {
     render(
       <RuleDisputes />
     )
-      screen.debug()
+
     expect(screen.getByText("Dispute Game Rule")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("expansion name")).toBeInTheDocument()
     expect(screen.getByPlaceholderText("number of players")).toBeInTheDocument()
@@ -16,5 +16,12 @@ describe('Rule Disputes', () => {
     expect(screen.getByPlaceholderText("official rule")).toBeInTheDocument()
     expect(screen.getByPlaceholderText("your house rule")).toBeInTheDocument()
     expect(screen.getByRole("button")).toBeInTheDocument()
+  })
+  it('should update as data is entered into inputs', () => {
+    render(
+      <RuleDisputes />
+    )
+    userEvent.type(screen.getByPlaceholderText("expansion name"), "stretchy stretch")
+    expect(screen.getByDisplayValue("stretchy stretch")).toBeInTheDocument()
   })
 })
