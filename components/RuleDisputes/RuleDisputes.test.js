@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from "@testing-library/react";
 import RuleDisputes from './RuleDisputes.js';
+import userEvent from '@testing-library/user-event';
 
 describe('Rule Disputes', () => {
   it('should render a form with inputs', () => {
